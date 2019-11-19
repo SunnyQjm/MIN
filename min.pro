@@ -51,7 +51,8 @@ SOURCES += $$PWD/ndn_ffmpeg_rtc/helper/*.cpp \
     ndnrtcdialog.cpp \
     workers/getvideostreamfromremotendn.cpp \
     globalconfig.cpp \
-    workers/getpcmfrommicrophoneworker.cpp
+    workers/getpcmfrommicrophoneworker.cpp \
+    workers/pcmplayerworker.cpp
 
 #    widgets/sdl2render.cpp \
 #    sdl2render.cpp
@@ -62,7 +63,8 @@ HEADERS += $$PWD/ndn_ffmpeg_rtc/helper/*.h \
     ndnrtcdialog.h \
     workers/getvideostreamfromremotendn.h \
     globalconfig.h \
-    workers/getpcmfrommicrophoneworker.h
+    workers/getpcmfrommicrophoneworker.h \
+    workers/pcmplayerworker.h
 #    widgets/sdl2render.h\
 #    sdl2render.h
 

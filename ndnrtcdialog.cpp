@@ -3,6 +3,8 @@
 #include <QPixmap>
 #include <QDebug>
 #include <globalconfig.h>
+#include "workers/getpcmfrommicrophoneworker.h"
+#include "workers/pcmplayerworker.h"
 extern "C" {
 #include <libavformat/avformat.h>
 #include <libavdevice/avdevice.h>
@@ -24,6 +26,16 @@ NDNRtcDialog::NDNRtcDialog(QWidget *parent) :
     connect(pGFFCW, SIGNAL(getOneFrame(QImage, int)), this, SLOT(presentOneFrame(QImage, int)));
     pGFFCW->moveToThread(pGFFCWThread);
     pGFFCWThread->start();
+
+    // 处理音频捕捉
+    QThread* pGetPCMFrameFromMicrophoneThread = new QThread(this);
+    GetPCMFromMicrophoneWorker* pGetPCMFrameFromMicrophoneWorker = new GetPCMFromMicrophoneWorker(
+                0, QString::fromStdString(GlobalConfig::contentPrefix),QString::fromStdString(GlobalConfig::host), GlobalConfig::port, 0);
+    connect(ui->btnStartCaptureFromCamera, SIGNAL(clicked(bool)),
+            pGetPCMFrameFromMicrophoneWorker, SLOT(beginCapturePCMFrameFromMicrophone()));
+    connect(pGetPCMFrameFromMicrophoneThread, SIGNAL(finished()), pGetPCMFrameFromMicrophoneWorker, SLOT(deleteLater()));
+    pGetPCMFrameFromMicrophoneWorker->moveToThread(pGetPCMFrameFromMicrophoneThread);
+    pGetPCMFrameFromMicrophoneThread->start();
 
     // 初始化模态框
     // 添加一个远程的NDN节点
@@ -81,6 +93,14 @@ void NDNRtcDialog::onAddRemote()
     connect(newThread, SIGNAL(started()), pGVSFE, SLOT(beginPullFromRemoteNDN()));
     pGVSFE->moveToThread(newThread);
     newThread->start();
+
+    QThread *audioThread = new QThread(this);
+    PCMPlayerWorker *ppw = new PCMPlayerWorker(
+                0, namePrefix, QString::fromStdString(GlobalConfig::host), GlobalConfig::port, this->count);
+    connect(audioThread, SIGNAL(finished()), ppw, SLOT(deleteLater()));
+    connect(audioThread, SIGNAL(started()), ppw, SLOT(beginPlayerPCM()));
+    ppw->moveToThread(audioThread);
+    audioThread->start();
 
     int row = (this->count / this->lineNum);
     int column = (this->count % this->lineNum);
