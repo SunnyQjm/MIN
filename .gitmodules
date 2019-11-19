@@ -1,0 +1,3 @@
+[submodule "ndn_ffmpeg_rtc"]
+	path = ndn_ffmpeg_rtc
+	url = https://github.com/SunnyQjm/ndn_ffmpeg_rtc.git
