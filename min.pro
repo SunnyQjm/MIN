@@ -4,7 +4,7 @@
 #
 #-------------------------------------------------
 
-QT       += core gui
+QT       += core gui sql
 CONFIG   += c++14
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
@@ -52,7 +52,8 @@ SOURCES += $$PWD/ndn_ffmpeg_rtc/helper/*.cpp \
     workers/getvideostreamfromremotendn.cpp \
     globalconfig.cpp \
     workers/getpcmfrommicrophoneworker.cpp \
-    workers/pcmplayerworker.cpp
+    workers/pcmplayerworker.cpp \
+    helper/dbhelper.cpp
 
 #    widgets/sdl2render.cpp \
 #    sdl2render.cpp
@@ -64,7 +65,8 @@ HEADERS += $$PWD/ndn_ffmpeg_rtc/helper/*.h \
     workers/getvideostreamfromremotendn.h \
     globalconfig.h \
     workers/getpcmfrommicrophoneworker.h \
-    workers/pcmplayerworker.h
+    workers/pcmplayerworker.h \
+    helper/dbhelper.h
 #    widgets/sdl2render.h\
 #    sdl2render.h
 

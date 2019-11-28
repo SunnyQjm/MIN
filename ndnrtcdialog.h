@@ -10,6 +10,7 @@
 #include <QPushButton>
 #include <QList>
 #include <QLabel>
+#include "ndn_ffmpeg_rtc/helper/SDL2Helper.h"
 
 namespace Ui {
 class NDNRtcDialog;
@@ -39,6 +40,7 @@ private:
     QDialog* addRemoteDlg;
     QLineEdit* addRemoteNameEdit;
     QPushButton* addRemoteDlgBtn;
+    SDL2Helper sdl2Helper;
 
 private slots:
     void presentOneFrame(QImage image, int index);

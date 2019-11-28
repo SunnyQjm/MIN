@@ -4,6 +4,7 @@
 #include "ndnrtcdialog.h"
 #include <ndn-cxx/face.hpp>
 #include <QMessageBox>
+#include "helper/dbhelper.h"
 
 LoginDialog::LoginDialog(QWidget *parent) :
     QDialog(parent),
@@ -16,6 +17,8 @@ LoginDialog::LoginDialog(QWidget *parent) :
     this->setWindowTitle("NDN多方视频会议系统");
     ui->editHost->setText(host);
     ui->editPort->setText(port);
+    DBHelper dbHelper;
+    dbHelper.initDB();
 }
 
 LoginDialog::~LoginDialog()
