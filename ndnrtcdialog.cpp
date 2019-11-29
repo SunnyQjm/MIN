@@ -12,7 +12,7 @@ extern "C" {
 
 NDNRtcDialog::NDNRtcDialog(QWidget *parent) :
     QDialog(parent),
-    ui(new Ui::NDNRtcDialog), sdl2Helper(SDL_INIT_AUDIO)
+    ui(new Ui::NDNRtcDialog)
 {
     ui->setupUi(this);
     this->setWindowTitle("NDN多方视频会议系统演示");
@@ -57,13 +57,13 @@ NDNRtcDialog::NDNRtcDialog(QWidget *parent) :
     av_register_all();
     avformat_network_init();
     avdevice_register_all();
-    this->sdl2Helper.setAudioSpecFreq(48000)
-            ->setAudioSpecFormat(AUDIO_S16SYS)
-            ->setAudioSpecChannels(2)
-            ->setAudioSpecSilence(0)
-            ->setAudioSpecSamples(1024)
-            ->openAudio()
-            ->pauseAudio(0);
+//    this->sdl2Helper.setAudioSpecFreq(48000)
+//            ->setAudioSpecFormat(AUDIO_S16SYS)
+//            ->setAudioSpecChannels(2)
+//            ->setAudioSpecSilence(0)
+//            ->setAudioSpecSamples(1024)
+//            ->openAudio()
+//            ->pauseAudio(0);
 
     connect(addRemoteDlgBtn, SIGNAL(clicked(bool)), this, SLOT(onAddRemote()));
 }
@@ -103,7 +103,7 @@ void NDNRtcDialog::onAddRemote()
 
     QThread *audioThread = new QThread(this);
     PCMPlayerWorker *ppw = new PCMPlayerWorker(
-                0, namePrefix, QString::fromStdString(GlobalConfig::host), GlobalConfig::port, this->count, &this->sdl2Helper);
+                0, namePrefix, QString::fromStdString(GlobalConfig::host), GlobalConfig::port, this->count);
     connect(audioThread, SIGNAL(finished()), ppw, SLOT(deleteLater()));
     connect(audioThread, SIGNAL(started()), ppw, SLOT(beginPlayerPCM()));
     ppw->moveToThread(audioThread);
