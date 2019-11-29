@@ -46,4 +46,4 @@ deploy:
   skip_cleanup: true
   on:
     repo: SunnyQjm/MIN
-    tags: true
+#    tags: true
