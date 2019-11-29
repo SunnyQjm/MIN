@@ -42,7 +42,7 @@ before_install:
   # 安装Qt multimedia
   - sudo apt install qt512multimedia
   # 安装pcap
-  - sudo apt install libpcap-dev
+  - sudo apt install libpcap-dev libboost-all-dev
   # 安装ndn-cxx
   - git clone https://github.com/SunnyQjm/NDNInstaller.git
   - proj_dir=`${pwd}`
