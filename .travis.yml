@@ -7,18 +7,19 @@ sudo: required
 #编译器为g++
 compiler: g++
 
-include:
-  - os: linux
-    dist: xenial
-    env:
-      targetFile=min
-      releaseName=min_ubuntu_xenial_x64
-    # 缓存, 指定qt安装路径，可以避免重复安装，节约CI时间
-    cache:
-      bundler: true
-      apt: true
-      directories:
-        - /opt/qt*/
+os: linux
+dist: xenial
+env:
+  targetFile=min
+  releaseName=min_ubuntu_xenial_x64
+
+# 缓存, 指定qt安装路径，可以避免重复安装，节约CI时间
+cache:
+  bundler: true
+  apt: true
+  directories:
+    - /opt/qt*/
+    - ~/Documents/nfd/ndn-cxx
 
 #组
 group: deprecated-2019Q1
@@ -45,10 +46,9 @@ before_install:
   - sudo apt install libpcap-dev libboost-all-dev
   # 安装ndn-cxx
   - git clone https://github.com/SunnyQjm/NDNInstaller.git
-  - proj_dir=`${pwd}`
   - cd NDNInstaller
   - ./install_ndn-cxx.sh
-  - cd `${proj_dir}`
+  - cd ..
 
 before_script:
   # 环境变量生效

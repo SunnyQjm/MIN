@@ -103,3 +103,10 @@ FORMS    += mainwindow.ui \
 
 #INCLUDEPATH += $$PWD/helper/include
 #DEPENDPATH += $$PWD/helper/include
+
+#unix:!macx: LIBS += -L$$PWD/libs/ -lndn-cxx
+
+#INCLUDEPATH += $$PWD/libs
+#DEPENDPATH += $$PWD/libs
+
+#unix:!macx: PRE_TARGETDEPS += $$PWD/libs/libndn-cxx.a
