@@ -34,7 +34,7 @@ before_deploy:
   - mv linuxdeployqt-6-x86_64.AppImage linuxdeployqt
   - chmod +x linuxdeployqt
   - mkdir ${releaseName}
-  - mv min ${releaseName}/t
+  - mv min ${releaseName}/
   - cd ${releaseName}
   - "../linuxdeployqt min -appimage"
   - cd ..
@@ -47,4 +47,4 @@ deploy:
   skip_cleanup: true
   on:
     repo: SunnyQjm/MIN
-    tags: true
+#    tags: true
