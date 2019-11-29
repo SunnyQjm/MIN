@@ -1,0 +1,54 @@
+# 指定为C语言
+language: cpp
+
+# 需要sudo
+sudo: required
+
+#编译器为g++
+compiler: g++
+
+include:
+  - os: linux
+    dist: xenial
+    env:
+      targetFile=min
+      releaseName=min_ubuntu_xenial_x64
+      qtppa="ppa:beineri/opt-qt-5.12.3-xenial"
+    # 缓存, 指定qt安装路径，可以避免重复安装，节约CI时间
+    cache:
+      bundler: true
+      apt: true
+      directories:
+        - /opt/qt*/
+
+#组
+group: deprecated-2019Q1
+
+# travis默认系统为ubuntu，并提供一些基础的命令。但是没有安装Qt，需要通过ubuntu源进行安装。
+# 关于ubuntu源 在这个网站上查看细节 https://launchpad.net/~beineri
+# 当然也可以通过qt安装包 +一些命令的方式来安装，这里以源的方式为主。
+# 安装前的设置
+# 添加qt的源
+before_install:
+  # 安装ffmpeg相关依赖
+  - sudo add-apt-repository ppa:jonathonf/ffmpeg-4
+  - sudo apt-get update
+  - sudo apt-get install libavcodec-dev libavformat-dev libswscale-dev libavdevice-dev libavutil-dev
+
+  # 安装sdl2相关依赖
+  - sudo apt install libsdl2-dev libsdl2-image-dev
+
+  # 安装Qt
+  - sudo add-apt-repository ${qtppa} -y; sudo apt-get update -qq; sudo apt-get install -y libglew-dev libglfw3-dev; sudo apt-get install -y qt512-meta-minimal;
+  # 安装Qt multimedia
+  - sudo apt install qtmultimedia5-*
+
+before_script:
+  # 环境变量生效
+  source /opt/qt512/bin/qt512-env.sh;
+script:
+  - qmake
+  - make
+
+before_deploy:
+  - mv bin/${targetFile} bin/${releaseName} ;
