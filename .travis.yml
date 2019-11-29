@@ -31,7 +31,7 @@ group: deprecated-2019Q1
 # 添加qt的源
 before_install:
   # 安装ffmpeg相关依赖
-  - sudo add-apt-repository ppa:jonathonf/ffmpeg-4
+  - sudo add-apt-repository ppa:jonathonf/ffmpeg-4 -y
   - sudo apt-get update
   - sudo apt-get install libavcodec-dev libavformat-dev libswscale-dev libavdevice-dev libavutil-dev
 
