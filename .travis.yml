@@ -35,7 +35,7 @@ before_deploy:
   - wget https://github.com/probonopd/linuxdeployqt/releases/download/6/linuxdeployqt-6-x86_64.AppImage
   - mv linuxdeployqt-6-x86_64.AppImage linuxdeployqt
   - chmod a+x linuxdeployqt
-  - ../linuxdeployqt MIN.desktop -appimage
+  - ./linuxdeployqt MIN.desktop -appimage
   - mv Min-*.AppImage ${releaseName}.AppImage
 
 deploy:
