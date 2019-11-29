@@ -45,7 +45,10 @@ before_install:
   - sudo apt install libpcap-dev
   # 安装ndn-cxx
   - git clone https://github.com/SunnyQjm/NDNInstaller.git
-  - ./NDNInstaller/install_ndn-cxx.sh
+  - proj_dir=`${pwd}`
+  - cd NDNInstaller
+  - ./install_ndn-cxx.sh
+  - cd `${proj_dir}`
 
 before_script:
   # 环境变量生效
