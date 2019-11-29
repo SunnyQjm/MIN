@@ -62,7 +62,7 @@ before_deploy:
   - move linuxdeployqt-6-x86_64.AppImage linuxdeployqt
   - chmod +x linuxdeployqt
   - mkdir ${releaseName}
-  - mv min ${releaseName}/
+  - mv min ${releaseName}/t
   - cd ${releaseName}
   - ../linuxdeployqt min -appimage
   - cd ..
