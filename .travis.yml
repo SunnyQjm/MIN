@@ -45,14 +45,10 @@ before_install:
   # 安装pcap
   - sudo apt install libpcap-dev libboost-all-dev
   # 安装ndn-cxx
-  - pwd
   - git clone https://github.com/SunnyQjm/NDNInstaller.git
   - cd NDNInstaller
-  - pwd
   - ./install_ndn-cxx.sh
-  - pwd
   - cd ..
-  - pwd
 
 before_script:
   # 环境变量生效
