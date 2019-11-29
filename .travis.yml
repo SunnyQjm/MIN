@@ -26,31 +26,30 @@ before_install:
   - ./install_ndn-cxx.sh
   - cd ..
 before_script: source /opt/qt512/bin/qt512-env.sh;
-#script:
-
-#  - qmake CONFIG+=release PREFIX=/usr
-#  - make -j$(nproc)
-#  - make INSTALL_ROOT=appdir -j$(nproc) install ; find appdir/
-#  - wget -c -nv "https://github.com/probonopd/linuxdeployqt/releases/download/continuous/linuxdeployqt-continuous-x86_64.AppImage"
-#  - chmod a+x linuxdeployqt-continuous-x86_64.AppImage
-#  # export VERSION=... # linuxdeployqt uses this for naming the file
-#  - ./linuxdeployqt-continuous-x86_64.AppImage appdir/usr/share/applications/*.desktop -appimage
-#  - ls -ltr
-#  - pwd
 script:
-#before_deploy:
-  - qmake
-  - make
-  - wget https://github.com/probonopd/linuxdeployqt/releases/download/6/linuxdeployqt-6-x86_64.AppImage
-  - mv linuxdeployqt-6-x86_64.AppImage linuxdeployqt
-  - chmod +x linuxdeployqt
-  - mkdir ${releaseName}
-  - mv min ${releaseName}/
-  - cd ${releaseName}
-  - ../linuxdeployqt min -appimage
+  - qmake CONFIG+=release PREFIX=/usr
+  - make -j$(nproc)
+  - make INSTALL_ROOT=appdir -j$(nproc) install ; find appdir/
+  - wget -c -nv "https://github.com/probonopd/linuxdeployqt/releases/download/continuous/linuxdeployqt-continuous-x86_64.AppImage"
+  - chmod a+x linuxdeployqt-continuous-x86_64.AppImage
+  # export VERSION=... # linuxdeployqt uses this for naming the file
+  - ./linuxdeployqt-continuous-x86_64.AppImage appdir/usr/share/applications/*.desktop -appimage
   - ls -ltr
-  - cd ..
-  - tar -czf ${releaseName}.tar.gz ${releaseName}
+  - pwd
+#script:
+##before_deploy:
+#  - qmake
+#  - make
+#  - wget https://github.com/probonopd/linuxdeployqt/releases/download/6/linuxdeployqt-6-x86_64.AppImage
+#  - mv linuxdeployqt-6-x86_64.AppImage linuxdeployqt
+#  - chmod a+x linuxdeployqt
+#  - mkdir ${releaseName}
+#  - mv min ${releaseName}/
+#  - cd ${releaseName}
+#  - ../linuxdeployqt min -appimage
+#  - ls -ltr
+#  - cd ..
+#  - tar -czf ${releaseName}.tar.gz ${releaseName}
 
 deploy:
   provider: releases

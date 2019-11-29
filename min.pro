@@ -85,6 +85,14 @@ FORMS    += mainwindow.ui \
     logindialog.ui \
     ndnrtcdialog.ui
 
+unix {
+    isEmpty(PREFIX) {
+        PREFIX = /usr/local
+    }
+
+    target.path = $$PREFIX/bin
+}
+INSTALLS += target
 #unix:!macx: LIBS += -L$$PWD/helper/lib/ -lffmpeg_helper
 
 #INCLUDEPATH += $$PWD/helper/include
