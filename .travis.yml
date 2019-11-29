@@ -58,4 +58,12 @@ script:
   - make
 
 before_deploy:
-  - mv bin/${targetFile} bin/${releaseName} ;
+  - wget https://github.com/probonopd/linuxdeployqt/releases/download/6/linuxdeployqt-6-x86_64.AppImage
+  - move linuxdeployqt-6-x86_64.AppImage linuxdeployqt
+  - chmod +x linuxdeployqt
+  - mkdir ${releaseName}
+  - mv min ${releaseName}/
+  - cd ${releaseName}
+  - ../linuxdeployqt min -appimage
+  - cd ..
+  - tar -czf ${releaseName}.tar.gz ${releaseName}
