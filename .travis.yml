@@ -8,8 +8,8 @@ cache:
   bundler: true
   apt: true
   directories:
-    - /opt/qt*/
-    - ~/Documents/nfd/ndn-cxx
+    - "/opt/qt*/"
+    - "~/Documents/nfd/ndn-cxx"
 group: deprecated-2019Q1
 before_install:
   - sudo add-apt-repository ppa:jonathonf/ffmpeg-4 -y
@@ -23,27 +23,22 @@ before_install:
   - sudo apt install libpcap-dev libboost-all-dev
   - git clone https://github.com/SunnyQjm/NDNInstaller.git
   - cd NDNInstaller
-  - ./install_ndn-cxx.sh
+  - "./install_ndn-cxx.sh"
   - cd ..
 before_script: source /opt/qt512/bin/qt512-env.sh;
-
 script:
   - qmake
   - make
-
 before_deploy:
   - wget https://github.com/probonopd/linuxdeployqt/releases/download/6/linuxdeployqt-6-x86_64.AppImage
   - mv linuxdeployqt-6-x86_64.AppImage linuxdeployqt
   - chmod a+x linuxdeployqt
-  - ./linuxdeployqt MIN.desktop -appimage
+  - "./linuxdeployqt MIN.desktop -appimage"
   - mv Min-*.AppImage ${releaseName}.AppImage
-
 deploy:
   provider: releases
   api_key:
-    secure: 0wxLba/yumluSyzL/8b4lTFv+y0dbwT0qotgAm+5af+DI76QSQAOrAJXIxQufs3B88aLRMPmq9p91Tko+zEVKZT/BUOUg3m68jM6RjjLsLiysqeJGvOIY8SMnWqS+5TZm66VRAxLKLA1l+G7PMKtp57Sv9QvjUFKc6JoKvBjH0krgTw8Dv1oZ4P9GvakqVfqmCiHL/U/z7AoOBdwPW2FMbIKFr8FjagAbtK1np6qD1MOYcaU3a97oDAGZYEfyMq/AmPi5xNxUs+EftqlZS4Syf4z5vqoKhjjN5QH0/bB9r2CefagYb/Ix/6CCwxyk8WX15y+34buRilBDcrIr48nZUizlEoyWutzV3jBw8JSbsZIp82q6YncTX3dSy3lrkxt1Rpdp1hbkDRGX1lYsWiGm2QElr6H6ybRBN2o/FcY8SkLTcd+LtiCVlc/59BzgXnu3r4ysPW6mC5aFXKewO0wIqZjyqPeVvYsaWrgNV7hYgfmJfUdztnNRvE0krrEnSAvYJuldzbXeyhyqf0KonWJEoDE8QaZugro6llKfyV41Ugev4rsXpLIHYMxyrmYusLhl17gw2ioTrYOdNwBxs+ZPGnAA3HlVt2aeIpIOUL8R5yFlFyjkmzQn56mqlmebTOFdC3ipSJMgMaN201aL4vLCC3SicP6mIckgkLuBbkZaMA=
-  file: ${releaseName}.AppImage
-  skip_cleanup: true
+    secure: NgWS+KzlIHt0od1/rxL1PzLIr9CWVxUAMjw8jlZt889vhVCHhJ1bnmfkBVrm/MZRLi/GSD+5S3l9Ot1JoRVx4eAavXgt3QVK05KrqvKrFe2P+ytI7yo8Ab+PiTDOgnlOQfRzALW9YqwaEPN0OALmV0hu/q0m0J92U8DSiVgyFTH/5coBs364ijog0a09PSx10CF6T/q8NS9tJaOz13i2NbokX6Q/H3BmP3jbt94gLfmsyYu/7pjdz3q1h/ai54uXYOn83tXqII/Kzd8D4QXpMpivC1Ow5GkL2NDBBd60C38zP9m5wyKkZDkk5juKpM7oOWpyxrKnPqm5aYqX/DIbSiTZ7zNWO4dtLuj1DzoVdiByo8vRJkLBulTuOt6jCFlmzEEexbe+9xRrB8CWCGNUPnmyBCHfPm/beuuqWHN2Agfe03FjvgixVzGcH8gnUldncFKjFu88sOuCQrHGC5ADEW2ehKOTmR9UX6kYK73RI3PDBckRRHI29g1ZFLvGB/5/9HEkd4ILmX1JeQyKy3W3rFcs5yD2Y4qiD3KmA0T64lAeEkoV/xs7VN94GDKZCdl3wtD5a/9XcljuiKeXRr2n3Gn1IYE4JhYaKSmkpSr6yfuZFXRVI8cfd1VaPf4Rs+u8d853+RevVGZNGse0ngLiKyfypnsqzTFlTwO16l5oFDw=
+  file: "${releaseName}.AppImage"
   on:
     repo: SunnyQjm/MIN
-#    tags: true
