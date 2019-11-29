@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=Min
+Comment=NDN多放视频会议软件
+Exec=min
+Icon=logo
+Categories=Office;
+X-AppImage-Version=aa66a35
