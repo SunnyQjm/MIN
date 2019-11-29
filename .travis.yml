@@ -27,8 +27,7 @@ before_install:
   - cd ..
 before_script: source /opt/qt512/bin/qt512-env.sh;
 #script:
-##  - qmake
-##  - make
+
 #  - qmake CONFIG+=release PREFIX=/usr
 #  - make -j$(nproc)
 #  - make INSTALL_ROOT=appdir -j$(nproc) install ; find appdir/
@@ -40,6 +39,8 @@ before_script: source /opt/qt512/bin/qt512-env.sh;
 #  - pwd
 script:
 #before_deploy:
+  - qmake
+  - make
   - wget https://github.com/probonopd/linuxdeployqt/releases/download/6/linuxdeployqt-6-x86_64.AppImage
   - mv linuxdeployqt-6-x86_64.AppImage linuxdeployqt
   - chmod +x linuxdeployqt
