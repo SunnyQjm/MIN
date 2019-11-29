@@ -41,6 +41,11 @@ before_install:
   - sudo add-apt-repository ppa:beineri/opt-qt-5.12.3-xenial -y; sudo apt-get update -qq; sudo apt-get install -y libglew-dev libglfw3-dev; sudo apt-get install -y qt512-meta-minimal;
   # 安装Qt multimedia
   - sudo apt install qt512multimedia
+  # 安装pcap
+  - sudo apt install libpcap-dev
+  # 安装ndn-cxx
+  - git clone https://github.com/SunnyQjm/NDNInstaller.git
+  - ./NDNInstaller/install_ndn-cxx.sh
 
 before_script:
   # 环境变量生效
