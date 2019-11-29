@@ -36,7 +36,7 @@ before_deploy:
   - mkdir ${releaseName}
   - mv min ${releaseName}/
   - cd ${releaseName}
-  - "../linuxdeployqt min -appimage"
+  - ../linuxdeployqt min -appimage
   - cd ..
   - tar -czf ${releaseName}.tar.gz ${releaseName}
 deploy:
