@@ -8,8 +8,8 @@ cache:
   bundler: true
   apt: true
   directories:
-    - "/opt/qt*/"
-    - "~/Documents/nfd/ndn-cxx"
+    - /opt/qt*/
+    - ~/Documents/nfd/ndn-cxx
 group: deprecated-2019Q1
 before_install:
   - sudo add-apt-repository ppa:jonathonf/ffmpeg-4 -y
@@ -23,7 +23,7 @@ before_install:
   - sudo apt install libpcap-dev libboost-all-dev
   - git clone https://github.com/SunnyQjm/NDNInstaller.git
   - cd NDNInstaller
-  - "./install_ndn-cxx.sh"
+  - ./install_ndn-cxx.sh
   - cd ..
 before_script: source /opt/qt512/bin/qt512-env.sh;
 #script:
