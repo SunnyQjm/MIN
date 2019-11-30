@@ -39,6 +39,7 @@ deploy:
   provider: releases
   api_key:
     secure: 10+MQsEnsdaO3J75kn2JqIBEK65WTNmnvEraOtNoC3kXfgl8a0p9KMRWkzTlQrrrAzgqFp6Lf8qYkq3Xdg/hV0Se89s9LmNozzPMbpuR1mDAugDyKoJjjv/HMJQgYbzSHLb7mKcEYKcrldW4n8wilYTo1LnXZQCwgXT4mIjGzs73q9q95+C8W/ERlOQnm89r5laQ7YVafAsYjFaw1VSUZ7llwJrShGTsETOqiF198QboY/Q8RvNh8WUYHlbrq/eraXIYql/XBeREyXE4WPcJs9EuKQTET0dq7DXFoOaI3EMcIqSCjlLbNLdeDIZEH2CgVzcz+FmA1+xolA2NRtrqAEvlfRrJJ8EDVK6ONFRBJKygd5ikv5EvuZZxIs6/Xi9X322QOOQrReihF+rNQS8cq9SBpFdZrBS4JXm8NF1XwGFvxc8Coz4NAac+35viy7a6wDIu/1exn3A4HhRaGj5Aj9yUoKOsU++m3a6cv2WY+BpA/fhCTu1JGZJlsTJrmmsV0/MhaYnnrkKtuGcjv+NKKLdYYMtMxZvlGjOnZ8vpHXN/yo3JRmWr9VvJIomrRKfMnOD/OuBz5KzwdMCvgXiHL+x07Kk/AEjyCewfT4ZFc1jSQOKmVMBZp3w03n6mGXG68rNSVuaTw0A3A41cuqxrW2Om9xVuSF5kcnowOSOUt5U=
+  skip_cleanup: true
   file: ${releaseName}.AppImage
   on:
     repo: SunnyQjm/MIN
