@@ -43,4 +43,4 @@ deploy:
   file: ${releaseName}.AppImage
   on:
     repo: SunnyQjm/MIN
-#    tags: true
+    tags: true
